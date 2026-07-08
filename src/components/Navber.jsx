@@ -6,7 +6,7 @@ import { IoSearchSharp } from "react-icons/io5";
 
 const Navber = () => {
   return (
-    <div className="bg-[#090909] py-3 ">
+    <div className=" py-3 ">
       <Container className="flex justify-between items-center">
         <div className="w-1/4">
           <img src={Logo} alt="" />
