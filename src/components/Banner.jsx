@@ -10,6 +10,7 @@ const Slider = SliderModule.default;
 
 const Banner = () => {
   var settings = {
+    
     infinite: true,
     speed: 500,
     autoplay: true,
