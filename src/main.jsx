@@ -8,6 +8,8 @@ import { ApiData } from './components/ApiData.jsx';
 
 createRoot(document.getElementById('root')).render(
   <ApiData>
+  <StrictMode>
     <App />
+  </StrictMode>
   </ApiData>,
 )

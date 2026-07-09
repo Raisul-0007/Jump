@@ -19,7 +19,6 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  console.log(Slider)
   return (
     <div>
       <Container>
