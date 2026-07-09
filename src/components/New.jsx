@@ -8,7 +8,9 @@ const New = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3
+    slidesToScroll: 3,
+    fade: true,
+    waitForAnimate: false,
   };
   return (
     <div className="text-white py-12.5">
