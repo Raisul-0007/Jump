@@ -37,7 +37,7 @@ const New = () => {
                   </div>
                 </div>
                 <div className="flex justify-between">
-                    <p className="capitalize lg:text-sm text-[12px] text-[#d3d1d1]">{item.category}</p>
+                    <p className="capitalize lg:text-sm text-[12px] text-[#d3d1d1]">{item.brand}</p>
                     <p className="lg:text-[12px]   text-[10px] text-black line-through">{item.price}</p>
                 </div>
                 </div>
