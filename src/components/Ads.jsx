@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from './Container';
 import Ad from '../assets/Ads.jpg'
-import Ad1 from '../assets/Ads1.jpg'
+import Ad1 from '../assets/Ad1.jpg'
 import Ad2 from '../assets/Ads2.jpg'
 
 

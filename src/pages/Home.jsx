@@ -3,6 +3,7 @@ import Navber from '../components/Navber';
 import Banner from '../components/Banner';
 import New from '../components/New';
 import Ads from '../components/Ads';
+import Offer from '../components/Offer';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner/>
       <New/>
       <Ads/>
+      <Offer/>
     </div>
   )
 }
