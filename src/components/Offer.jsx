@@ -17,6 +17,11 @@ const Offer = () => {
         </div>
         <div className="">
           <Swiper
+        slidesPerView={5}
+        spaceBetween={30}
+        navigation
+        modules={[Navigation]}
+        className="mySwiper"
       >
         {info.map((item)=>(
           <SwiperSlide>
