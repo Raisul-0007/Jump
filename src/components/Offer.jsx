@@ -15,7 +15,7 @@ const Offer = () => {
         <div className="">
           <h3 className="italic text-4xl text-center font-semibold">Offer</h3>
         </div>
-        <div className="">
+        <div className="py-20">
           <Swiper
         slidesPerView={5}
         spaceBetween={30}
@@ -25,8 +25,20 @@ const Offer = () => {
       >
         {info.map((item)=>(
           <SwiperSlide>
+            <div className="bg-[#ffffff23] py-5 my-auto lg:min-h-70">
+              <img className="w-full" src={item.thumbnail} alt="" />
+            </div>
             <div className="">
-              <img src={item.thumbnail} alt="" />
+              <div className="flex justify-between items-center">
+                <h4 className="lg:text-2xl text-xl">{item.title.slice(0, 12)}</h4>
+                <p className="lg:text-[16px] text-[12px] text-red-500">{(item.price-(item.price * item.discountPercentage) / 100).toFixed(2)}</p>
+              </div>
+              <div className="flex justify-between">
+                <p className="lg:text-[16px] text-[12px] capitalize">
+                  {item.category ? item.category : "Others"}
+                </p>
+                <p className="lg:text-[12px] text-[9px] line-through">{item.price}</p>
+              </div>
             </div>
           </SwiperSlide>
         ))}
