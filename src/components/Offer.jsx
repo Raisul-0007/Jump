@@ -16,21 +16,21 @@ const Offer = () => {
     <div className="text-white py-12.5">
       <Container>
         <div className="">
-          <h3 className="italic text-4xl text-center font-semibold">Offer</h3>
+          <h3 className="italic text-4xl text-center font-semibold">Offer Products</h3>
         </div>
-        <div className="py-10">
+        <div className="py-10 px-5">
           <div className="flex justify-end gap-4 mb-5">
-            <button ref={prevRef} className="p-3 bg-[#ffffff13] rounded-lg text-red-500">
+            <button ref={prevRef} className="p-3 cursor-pointer bg-[#ffffff13] rounded-lg text-red-500">
               <FaArrowLeft />
             </button>
-            <button ref={nextRef} className="p-3 bg-[#ffffff13] text-red-500 rounded-lg">
+            <button ref={nextRef} className="p-3 cursor-pointer bg-[#ffffff13] text-red-500 rounded-lg">
               <FaArrowRight />
             </button>
           </div>
           <Swiper
-        slidesPerView={5}
-        spaceBetween={20}
-        centeredSlides={true}
+        slidesPerView={4}
+        spaceBetween={40}
+        slidesPerGroup={2}
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
@@ -47,8 +47,8 @@ const Offer = () => {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 5,
-            spaceBetween: 50,
+            slidesPerView: 4,
+            spaceBetween: 40,
           },
         }}
         navigation={{
@@ -58,21 +58,21 @@ const Offer = () => {
         modules={[Navigation, Autoplay]}
         className="mySwiper"
       >
-        {info.map((item)=>(
+        {info.slice(100, 175).map((item)=>(
           <SwiperSlide>
-            <div className="bg-[#ffffff13] py-5 my-auto lg:min-h-70">
+            <div className="bg-[#ffffff13] py-5 my-auto">
               <img className="w-full" src={item.thumbnail} alt="" />
             </div>
             <div className="py-4  ">
               <div className="flex justify-between items-center">
                 <h4 className="lg:text-2xl text-xl">{item.title.slice(0, 12)}</h4>
-                <p className="lg:text-[16px] text-[12px] text-red-500">${(item.price-(item.price * item.discountPercentage) / 100).toFixed(2)}</p>
+                <p className="lg:text-[16px] text-[12px] text-red-500">$ {(item.price-(item.price * item.discountPercentage) / 100).toFixed(2)}</p>
               </div>
               <div className="flex justify-between">
                 <p className="lg:text-[16px] text-[12px] capitalize">
                   {item.category ? item.category : "Others"}
                 </p>
-                <p className="lg:text-[12px] text-[9px] line-through">${item.price}</p>
+                <p className="lg:text-[12px] text-[9px] line-through">$ {item.price}</p>
               </div>
             </div>
           </SwiperSlide>
