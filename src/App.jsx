@@ -2,7 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css'
 import Home from './pages/Home'
 import Layout from "./components/Layout"
-import Shop from "./pages/Shop"
+import Shop from './pages/Shop';
+
 function App() {
 
   let router = createBrowserRouter([
@@ -23,7 +24,7 @@ function App() {
 
 
   return (
-    <div className="bg-[#090909]">
+    <div className="bg-[#090909] text-white">
       <RouterProvider router={router}/>
     </div>
   )

@@ -16,7 +16,7 @@ const Offer = () => {
     <div className="text-white py-12.5">
       <Container>
         <div className="">
-          <h3 className="italic text-4xl text-center font-semibold">Offer Products</h3>
+          <h3 className="italic text-5xl text-center font-semibold">Offer Products</h3>
         </div>
         <div className="py-10 px-5">
           <div className="flex justify-end gap-4 mb-5">
