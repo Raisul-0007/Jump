@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Data } from './ApiData';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import ProuductSlice from './ProuductSlice';
 
 const Filter = () => {
   let info = useContext(Data)
@@ -9,18 +10,41 @@ const Filter = () => {
   useEffect(()=>{
     setCategory([...new Set(info.map((item)=> item.category))])
   },[info])
-  const [activeCategory, setActiveCategory] = useState("");
-  
+  let [active, setActive] = useState("")
+  let [activePrice, setActivePrice] = useState()
 let [price, priceShow] = useState(false)
   let [priceSet, priceSetShow] = useState([])
   useEffect(()=>{
     priceSetShow([...new Set(info.map((item)=> item.price))])
   },[info])
 
+
+  let [filter, setFilter] = useState([])
+  let handleCategory = (i)=>{
+    let filterItem = info.filter((item)=> item.category == i)
+    setFilter(filterItem)
+    setActive(i)
+  } 
+
+  let [low, setLow] = useState()
+  let [high, setHigh] = useState()
+  let handlePrice = ( value)=>{
+    setLow(value.low)
+    setHigh(value.high)
+    let priceFilter = info.filter((item)=> item.price > value.low && item.price < value.high)
+    setFilter(priceFilter) 
+    setActivePrice(value)
+  }
+
+  let handleAll = ()=>{
+    setFilter([])
+    setActive(i)
+    setActivePrice(value)
+  }
   return (
     <div className="flex gap-5 ">
     <div className="w-1/4">
-      <div className="py-20">
+      <div className="py-5">
         <div onClick={(()=> cateShow(!cate))} className="flex justify-between items-center border border-red-500 p-2">
           <h3 className="text-3xl cursor-pointer">Filter By Category</h3>
           {cate ? <FaChevronUp /> : <FaChevronDown />}
@@ -32,9 +56,14 @@ let [price, priceShow] = useState(false)
   }`}>
           {cate &&(
             <ul className="">
+              <li onClick={handleAll} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+        active === item
+          ? "text-red-500 border-red-500 font-semibold"
+          : " hover:border-red-500 hover:text-red-500"
+      }`}>All Category</li>
           {category.map((item)=>(
-              <li onClick={()=> setActiveCategory(item)} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
-        activeCategory === item
+              <li onClick={()=>handleCategory(item)} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+        active === item
           ? "text-red-500 border-red-500 font-semibold"
           : " hover:border-red-500 hover:text-red-500"
       }`}>{item}</li>
@@ -43,8 +72,8 @@ let [price, priceShow] = useState(false)
           )}
         </div>
       </div> 
-      <div className="py-20">
-        <div onClick={(()=> priceShow(!price))} className="flex justify-between items-center border border-red-500 p-2">
+      <div className="py-5">
+        <div onClick={(()=> priceShow(!price))} className="flex justify-between items-center border border-red-500 p-2 cursor-pointer">
           <h3 className="text-3xl">Filter By Price</h3>
           {price ? <FaChevronUp /> : <FaChevronDown />}
         </div>
@@ -55,15 +84,19 @@ let [price, priceShow] = useState(false)
   }`}>
     {price &&(
       <ul>
-        {priceSet.map((item)=>(
-          <li className="capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2">{item}</li>
-        ))}
+        <li onClick={handleAll} className="capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2">All Price</li>
+          <li onClick={()=>handlePrice({low:0, high:100})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 `}>$0-$100</li>
+          <li onClick={()=>handlePrice({low:101, high:1000})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2`}>$101-$1000</li>
+          <li onClick={()=>handlePrice({low:1001, high:10000})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2`}>$1001-$10000</li>
+          <li onClick={()=>handlePrice({low:10001, high:Infinity})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2`}>10000+</li>
       </ul>
     )}
   </div>
     </div>
     </div>
-    <div className="w-3/4"></div>
+    <div className="w-3/4">
+    <ProuductSlice filter={filter}/>
+    </div>
     </div>
   )
 }
