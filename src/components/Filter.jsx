@@ -11,12 +11,8 @@ const Filter = () => {
     setCategory([...new Set(info.map((item)=> item.category))])
   },[info])
   let [active, setActive] = useState("")
-  let [activePrice, setActivePrice] = useState()
-let [price, priceShow] = useState(false)
-  let [priceSet, priceSetShow] = useState([])
-  useEffect(()=>{
-    priceSetShow([...new Set(info.map((item)=> item.price))])
-  },[info])
+  let [activePrice, setActivePrice] = useState({})
+  let [price, priceShow] = useState(false)
 
 
   let [filter, setFilter] = useState([])
@@ -38,8 +34,10 @@ let [price, priceShow] = useState(false)
 
   let handleAll = ()=>{
     setFilter([])
-    setActive(i)
-    setActivePrice(value)
+    setActive("")
+    setActivePrice("")
+    setLow(null)
+    setHigh(null)
   }
   return (
     <div className="flex gap-5 ">
@@ -57,7 +55,7 @@ let [price, priceShow] = useState(false)
           {cate &&(
             <ul className="">
               <li onClick={handleAll} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
-        active === item
+        active === ""
           ? "text-red-500 border-red-500 font-semibold"
           : " hover:border-red-500 hover:text-red-500"
       }`}>All Category</li>
@@ -84,11 +82,31 @@ let [price, priceShow] = useState(false)
   }`}>
     {price &&(
       <ul>
-        <li onClick={handleAll} className="capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2">All Price</li>
-          <li onClick={()=>handlePrice({low:0, high:100})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 `}>$0-$100</li>
-          <li onClick={()=>handlePrice({low:101, high:1000})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2`}>$101-$1000</li>
-          <li onClick={()=>handlePrice({low:1001, high:10000})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2`}>$1001-$10000</li>
-          <li onClick={()=>handlePrice({low:10001, high:Infinity})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2`}>10000+</li>
+        <li onClick={handleAll} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+    !activePrice.low
+      ? "text-red-500 border-red-500 font-semibold"
+      : "hover:border-red-500 hover:text-red-500"
+  }`}>All Price</li>
+          <li onClick={()=>handlePrice({low:0, high:100})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+    activePrice.low === 0 && activePrice.high === 100
+      ? "text-red-500 border-red-500 font-semibold"
+      : "hover:border-red-500 hover:text-red-500"
+  }`}>$0-$100</li>
+          <li onClick={()=>handlePrice({low:101, high:1000})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+    activePrice.low === 100 && activePrice.high === 1000
+      ? "text-red-500 border-red-500 font-semibold"
+      : "hover:border-red-500 hover:text-red-500"
+  }`}>$101-$1000</li>
+          <li onClick={()=>handlePrice({low:1001, high:10000})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+    activePrice.low === 1001 && activePrice.high === 10000
+      ? "text-red-500 border-red-500 font-semibold"
+      : "hover:border-red-500 hover:text-red-500"
+  }`}>$1001-$10000</li>
+          <li onClick={()=>handlePrice({low:10001, high:Infinity})} className={`capitalize px-2 text-xl cursor-pointer transition-colors duration-300 border-b py-2 ${
+    activePrice.low === 10001 && activePrice.high === Infinity
+      ? "text-red-500 border-red-500 font-semibold"
+      : "hover:border-red-500 hover:text-red-500"
+  }`}>10000+</li>
       </ul>
     )}
   </div>
