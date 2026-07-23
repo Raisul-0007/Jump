@@ -21,7 +21,9 @@ const Filter = () => {
     setFilter(filterItem)
     setActive(i)
   } 
-
+  useEffect(()=>{
+    setFilter(info)
+  },[info])
   let [low, setLow] = useState()
   let [high, setHigh] = useState()
   let handlePrice = ( value)=>{
@@ -33,9 +35,9 @@ const Filter = () => {
   }
 
   let handleAll = ()=>{
-    setFilter([])
+    setFilter(info)
     setActive("")
-    setActivePrice("")
+    setActivePrice({})
     setLow(null)
     setHigh(null)
   }

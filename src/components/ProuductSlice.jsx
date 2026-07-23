@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { FaListUl, FaTableCellsLarge } from 'react-icons/fa6';
+import Products from './Products';
 
 const ProuductSlice = ({filter}) => {
-  let [perPage, setPerPage] = useState(6)
+  let [perPage, setPerPage] = useState(12)
   let [currentPage, setCurrentPage] = useState(1)
   let lastPage = perPage * currentPage
   let firstPage = perPage - perPage
@@ -60,6 +61,9 @@ const ProuductSlice = ({filter}) => {
           <option value="20">20</option>
         </select>
       </div>
+      </div>
+      <div className="">
+        <Products active={active} allPage={allPage}/>
       </div>
       <div className=""></div>
     </div>
