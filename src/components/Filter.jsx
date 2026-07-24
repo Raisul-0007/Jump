@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Data } from './ApiData';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import ProuductSlice from './ProuductSlice';
+import Pagination from './Pagination';
 
 const Filter = () => {
   let info = useContext(Data)
@@ -116,6 +117,7 @@ const Filter = () => {
     </div>
     <div className="w-3/4">
     <ProuductSlice filter={filter}/>
+    <Pagination />
     </div>
     </div>
   )
