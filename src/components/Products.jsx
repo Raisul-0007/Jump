@@ -30,7 +30,7 @@ const Products = ({active, allPage}) => {
       ) : (
         <div className="">
           {allPage.map((item)=>(
-            <div className="flex p-4">
+            <div className="flex p-4 hover:scale-108 ease-in-out duration-300">
               <div className="w-1/4">
                 <img className="bg-[#ffffff13]  rounded-l-4xl " src={item.thumbnail} alt="" />
               </div>
