@@ -3,7 +3,7 @@ import './App.css'
 import Home from './pages/Home'
 import Layout from "./components/Layout"
 import Shop from './pages/Shop';
-
+import ProductDetails from "./pages/PruductDetails"
 function App() {
 
   let router = createBrowserRouter([
@@ -17,6 +17,9 @@ function App() {
     },{
       path:"/shop",
       element:<Shop/>,
+    },{
+      path:"/shop/:id",
+      element:<ProductDetails/>,
     },
   ],
   },

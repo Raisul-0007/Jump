@@ -1,12 +1,12 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const Products = ({active, allPage}) => {
   return (
     <div className="py-10">
       {active === "active" ? (
         <div className="flex flex-wrap">
           {allPage.map((item)=>(
-            <div className="w-1/3 p-2 group hover:scale-108 ease-in-out duration-300 ">
+            <Link  to="/shop/:id">
               <div className="bg-[#ffffff13] rounded-t-4xl rounded-r-4xl">
                 <img className="w-full " src={item.thumbnail} alt="" />
               </div>
@@ -24,13 +24,13 @@ const Products = ({active, allPage}) => {
                     <p className="lg:text-[12px]   text-[10px] text-black line-through">$ {item.price}</p>
                 </div>
                 </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (
         <div className="">
           {allPage.map((item)=>(
-            <div className="flex p-4 hover:scale-108 ease-in-out duration-300">
+            <Link to="/shop/:id" className="flex p-4 hover:scale-108 ease-in-out duration-300">
               <div className="w-1/4">
                 <img className="bg-[#ffffff13]  rounded-l-4xl " src={item.thumbnail} alt="" />
               </div>
@@ -44,7 +44,7 @@ const Products = ({active, allPage}) => {
                 <p className="text-black line-through py-0.5 text-xl">$ {item.price}</p>
               </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
