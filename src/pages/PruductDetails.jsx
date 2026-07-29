@@ -10,7 +10,9 @@ const PruductDetails = () => {
   },[productId])
   return (
     <div>
-      <Container></Container>
+      <Container>
+        <div className=""></div>
+      </Container>
     </div>
   )
 }
