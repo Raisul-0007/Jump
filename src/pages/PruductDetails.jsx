@@ -38,6 +38,9 @@ const PruductDetails = () => {
             <div className="flex gap-0.5 text-amber-300">
               {clientRating}
             </div>
+            <div className="">
+              Add To Cart
+            </div>
           </div>
         </div>
       </Container>
