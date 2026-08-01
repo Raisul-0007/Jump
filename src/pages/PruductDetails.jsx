@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Container from '../components/Container'
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import axios from "axios"
 import { TiStarHalf } from "react-icons/ti";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io"
@@ -18,9 +18,7 @@ const PruductDetails = () => {
       <IoIosStar key={index}/>
     ): product?.rating > number ? (
       <TiStarHalf key={index}/>
-    ):(
-      <div className=""></div>
-    )
+    ):null
   })
 
   return (
@@ -35,11 +33,11 @@ const PruductDetails = () => {
               <p className="capitalize text-red-500">{product?.category}</p>
               <h2 className="text-6xl py-2">{product?.title}</h2>
             </div>
-            <div className="flex gap-0.5 text-amber-300">
+            <div className="flex gap-0.5 text-amber-300 pb-4">
               {clientRating}
             </div>
-            <div className="">
-              Add To Cart
+            <div className="py-2">
+              <Link to="#" className='px-5 cursor-pointer py-3 bg-red-500 text-white rounded'>Add To Cart</Link>
             </div>
           </div>
         </div>
