@@ -21,8 +21,9 @@ const PruductDetails = () => {
     ):null
   })
 
+  let mainPrice = product?.price - ((product?.price * product?.discountPercentage) / 100)
   return (
-    <div>
+    <div className='py-20'>
       <Container>
         <div className="flex gap-10">
           <div className="w-2/5">
@@ -33,11 +34,19 @@ const PruductDetails = () => {
               <p className="capitalize text-red-500">{product?.category}</p>
               <h2 className="text-6xl py-2">{product?.title}</h2>
             </div>
-            <div className="flex gap-0.5 text-amber-300 pb-4">
+            <div className="flex gap-0.5 text-amber-300 text-2xl">
               {clientRating}
             </div>
+            <div className="flex items-center gap-3 py-5">
+              <div className="text-3xl">
+                {mainPrice.toFixed(2)}
+              </div>
+              <div className="text-red-900 text-2xl line-through">
+                {product?.price}
+              </div>
+            </div>
             <div className="py-2">
-              <Link to="#" className='px-5 cursor-pointer py-3 bg-red-500 text-white rounded'>Add To Cart</Link>
+              <Link to="/shop" className='px-5 text-xl cursor-pointer py-3 bg-red-500 hover:bg-red-900 text-white rounded'>Add To Cart</Link>
             </div>
           </div>
         </div>
