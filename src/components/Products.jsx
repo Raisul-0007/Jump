@@ -4,9 +4,9 @@ const Products = ({active, allPage}) => {
   return (
     <div className="py-10">
       {active === "active" ? (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-between">
           {allPage.map((item)=>(
-            <Link  to={`/shop/${item.id}`}>
+            <Link  to={`/shop/${item.id}`} className="py-2 px-2 w-1/3">
               <div className="bg-[#ffffff13] rounded-t-4xl rounded-r-4xl">
                 <img className="w-full " src={item.thumbnail} alt="" />
               </div>
@@ -30,7 +30,7 @@ const Products = ({active, allPage}) => {
       ) : (
         <div className="">
           {allPage.map((item)=>(
-            <Link to={`/shop/${item.id}`} className="flex p-4 hover:scale-108 ease-in-out duration-300">
+            <Link to={`/shop/${item.id}`} className="flex p-4 hover:scale-108 ease-in-out duration-300 ">
               <div className="w-1/4">
                 <img className="bg-[#ffffff13]  rounded-l-4xl " src={item.thumbnail} alt="" />
               </div>
