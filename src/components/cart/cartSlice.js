@@ -1,15 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 0,
+  cartItem: [],
 }
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    addToCart:(state, action)=>{
+      let index = state.cartItem.findIndex((item)=> item.id === action.payload.id)
+      if(index != -1){
+        state.cartItem[index].qun++
+      }else{
+        state.cartItem = [...state.cartItem, action.payload]
+      }
+    },
+    increment: (state, action) => {
+      state.value = 1
     },
     decrement: (state) => {
       state.value -= 1
