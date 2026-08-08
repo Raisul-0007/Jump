@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Layout from "./components/Layout"
 import Shop from './pages/Shop';
 import ProductDetails from "./pages/PruductDetails"
+import Cart from './pages/Cart';
 function App() {
 
   let router = createBrowserRouter([
@@ -20,7 +21,10 @@ function App() {
     },{
       path:"/shop/:id",
       element:<ProductDetails/>,
-    },
+    },{
+      path: "/cart",
+      element:<Cart/>
+    }
   ],
   },
   ])
