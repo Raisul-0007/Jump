@@ -1,11 +1,18 @@
-import React from 'react'
+import { lruMemoize } from "@reduxjs/toolkit";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  let dispatch = useDispatch();
+  let cartData = useSelector((state) => state.cart.cartItem);
+  let grandTotal = cartData.reduce((total, item) => {
+    return (
+      total +
+      (item.price - (item.price * item.discountPrecentage) / 100) * item.qun
+    );
+  }, 0);
 
-export default Cart
+  return <div className=""></div>;
+};
+
+export default Cart;
