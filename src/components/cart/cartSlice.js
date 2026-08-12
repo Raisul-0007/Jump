@@ -18,19 +18,32 @@ export const cartSlice = createSlice({
         state.cartItem = [...state.cartItem, action.payload];
       }
     },
+    removeCart: (state, action) => {
+      let filterCate = state.cartItem.filter(
+        (item) => item.id != action.payload.id,
+      );
+      state.cartItem = filterCate;
+    },
     increment: (state, action) => {
-      state.value = 1;
+      let index = state.cartItem.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      if (index !== -1) {
+        state.cartItem[index].qun + 1;
+      }
     },
     decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+      let index = state.cartItem.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      if (index !== -1 && state.cartItem[index].qun > 1) {
+        state.cartItem[index].qun - 1;
+      }
     },
   },
 });
 
-export const { addToCart, increment, decrement, incrementByAmount } =
+export const { addToCart, removeCart, increment, decrement } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

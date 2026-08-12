@@ -11,8 +11,12 @@ const Cart = () => {
       (item.price - (item.price * item.discountPrecentage) / 100) * item.qun
     );
   }, 0);
-
-  return <div className="">ami</div>;
+  return (
+    <div>
+      <div className=""></div>
+      <div className=""></div>
+    </div>
+  );
 };
 
 export default Cart;
