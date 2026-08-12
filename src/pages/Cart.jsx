@@ -12,7 +12,7 @@ const Cart = () => {
     );
   }, 0);
 
-  return <div className=""></div>;
+  return <div className="">ami</div>;
 };
 
 export default Cart;

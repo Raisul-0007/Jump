@@ -5,7 +5,7 @@ import axios from "axios";
 import { TiStarHalf } from "react-icons/ti";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import addToCart from "../components/cart/cartSlice";
+import { addToCart } from "../components/cart/cartSlice";
 const PruductDetails = () => {
   let { id } = useParams();
   let [product, setProduct] = useState();
@@ -33,7 +33,7 @@ const PruductDetails = () => {
     dispatch(addToCart({ ...item, qun: 1 }));
   };
   return (
-    <div className="py-20">
+    <div className="py-20 md:h-[1000px]">
       <Container>
         <div className="flex gap-10">
           <div className="w-2/5">
@@ -52,19 +52,18 @@ const PruductDetails = () => {
               {clientRating}
             </div>
             <div className="flex items-center gap-3 py-5">
-              <div className="text-3xl">{mainPrice.toFixed(2)}</div>
+              <div className="text-3xl">{mainPrice?.toFixed(2)}</div>
               <div className="text-red-900 text-2xl line-through">
                 {product?.price}
               </div>
             </div>
             <div className="py-2">
-              <Link
-                to="/shop"
-                onClick={handleCart}
+              <button
+                onClick={() => handleCart(product)}
                 className="px-5 text-xl cursor-pointer py-3 bg-red-500 hover:bg-red-900 text-white rounded"
               >
                 Add To Cart
-              </Link>
+              </button>
             </div>
           </div>
         </div>
