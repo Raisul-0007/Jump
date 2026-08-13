@@ -29,15 +29,15 @@ export const cartSlice = createSlice({
         (item) => item.id === action.payload.id,
       );
       if (index !== -1) {
-        state.cartItem[index].qun + 1;
+        state.cartItem[index].qun += 1;
       }
     },
-    decrement: (state) => {
+    decrement: (state, action) => {
       let index = state.cartItem.findIndex(
         (item) => item.id === action.payload.id,
       );
       if (index !== -1 && state.cartItem[index].qun > 1) {
-        state.cartItem[index].qun - 1;
+        state.cartItem[index].qun -= 1;
       }
     },
   },
