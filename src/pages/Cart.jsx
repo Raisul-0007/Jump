@@ -14,31 +14,31 @@ const Cart = () => {
   }, 0);
   return (
     <div>
-      <Container>
+      <Container className="">
         <div className="py-20">
-          <h3 className="text-5xl">Your Cart</h3>
+          {cartData.length > 0 && <h3 className="text-5xl">Your Cart</h3>}
         </div>
-        <div className="">
+        <div className="pb-20">
           {cartData.length > 0 ? (
             <div className="">
-              <div className="">
-                <div className="w-2/5 py-2 flex items-center justify-center">
+              <div className="flex border bg-red-500 rounded-t-xl">
+                <div className="w-2/5 py-5 flex items-center justify-center border-r">
                   <h3>Product Details</h3>
                 </div>
-                <div className="w-1/5 py-2 flex items-center justify-center">
+                <div className="w-1/5 py-5 flex items-center justify-center border-r">
                   <h3>Price</h3>
                 </div>
-                <div className="w-1/5 py-2 flex items-center justify-center">
+                <div className="w-1/5 py-5 flex items-center justify-center border-r">
                   <h3>Quantity</h3>
                 </div>
-                <div className="w-1/5 py-2 flex items-center justify-center">
+                <div className="w-1/5 py-5 flex items-center justify-center">
                   <h3>Total</h3>
                 </div>
               </div>
               <div className="">
                 {cartData.map((item) => (
-                  <div className="flex">
-                    <div className="w-2/5 py-2 flex items-center justify-center gap-5">
+                  <div className="flex border border-t-0">
+                    <div className="w-2/5 py-5 border-r flex items-center justify-center gap-5">
                       <img
                         className="h-15 w-15 border border-[#918e8e] bg-[#ffffff2f]"
                         src={item.thumbnail}
@@ -46,13 +46,15 @@ const Cart = () => {
                       />
                       <h3 className="text-xl capitalize">{item.title}</h3>
                     </div>
-                    <div className="w-1/5 py-2 flex items-center justify-center italic text-sm text-red-500">
-                      {(
-                        item.price -
-                        (item.price * item.discountPercentage) / 100
-                      ).toFixed(2)}
+                    <div className="w-1/5 flex items-center justify-center py-5 border-r italic">
+                      <p className="text-sm text-red-500">
+                        {(
+                          item.price -
+                          (item.price * item.discountPercentage) / 100
+                        ).toFixed(2)}
+                      </p>
                     </div>
-                    <div className="w-1/5 py-2 flex items-center justify-center gap-3">
+                    <div className="w-1/5 flex items-center justify-center gap-3 py-5 border-r">
                       <button className="border cursor-pointer bg-white text-black p-0.5 rounded">
                         <FiMinus />
                       </button>
@@ -61,7 +63,7 @@ const Cart = () => {
                         <FiPlus />
                       </button>
                     </div>
-                    <div className="w-1/5 py-2 flex items-center justify-center italic text-sm">
+                    <div className="w-1/5 py-5 flex items-center justify-center italic text-sm">
                       {(
                         (item.price -
                           (item.price * item.discountPercentage) / 100) *
@@ -73,7 +75,10 @@ const Cart = () => {
               </div>
             </div>
           ) : (
-            <div className=""></div>
+            <div className="text-center">
+              <h4 className="text-5xl">No product in your cart</h4>
+              <p className="py-5 text-red-500">Please Buy Somethings</p>
+            </div>
           )}
         </div>
       </Container>
