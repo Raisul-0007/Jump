@@ -38,13 +38,13 @@ const Cart = () => {
               <div className="">
                 {cartData.map((item) => (
                   <div className="flex border border-t-0">
-                    <div className="w-2/5 py-5 border-r flex items-center justify-center gap-5">
+                    <div className="w-2/5 py-5 border-r flex items-center px-15 gap-5">
                       <img
                         className="h-15 w-15 border border-[#918e8e] bg-[#ffffff2f]"
                         src={item.thumbnail}
                         alt={item.id}
                       />
-                      <h3 className="text-xl capitalize">{item.title}</h3>
+                      <h3 className="text-xl capitalize">{item.title.slice(0, 30)}</h3>
                     </div>
                     <div className="w-1/5 flex items-center justify-center py-5 border-r italic">
                       <p className="text-sm text-red-500">
