@@ -84,9 +84,15 @@ const Cart = () => {
 
         <div className="">
           {cartData.length > 0 && (
-            <div className="flex justify-end gap-5">
-              <h3 className="text-2xl">Grand Total:</h3>
-              <p>{grandTotal.toFixed(2)}</p>
+            <div className="flex justify-end ">
+              <div className="border rounded-4xl flex items-center">
+              <div className="px-3 py-3 rounded-l-4xl bg-red-500 border-r">
+                <h3 className="text-2xl">Grand Total:</h3>
+              </div>
+              <div className="px-5 py-3 ">
+                <p className="text-xl text-red-500">${grandTotal.toFixed(2)}</p>
+              </div>
+              </div>
               </div>
           )}
         </div>
