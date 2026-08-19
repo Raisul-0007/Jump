@@ -3,6 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Container from "../components/Container";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { decrement, increment, removeCart } from "../components/cart/cartSlice";
+import { RxCross2 } from "react-icons/rx";
 const Cart = () => {
   let dispatch = useDispatch();
   let cartData = useSelector((state) => state.cart.cartItem);
@@ -12,6 +14,15 @@ const Cart = () => {
       (item.price - (item.price * item.discountPercentage) / 100) * item.qun
     );
   }, 0);
+  let handleRemove = (item)=>{
+    dispatch(removeCart(item))
+  }
+  let handlePlus = (item)=>{
+    dispatch(increment(item))
+  }
+  let handleMinus = (item)=>{
+    dispatch(decrement(item))
+  }
   return (
     <div>
       <Container className="">
@@ -39,6 +50,7 @@ const Cart = () => {
                 {cartData.map((item) => (
                   <div className="flex border border-t-0">
                     <div className="w-2/5 py-5 border-r flex items-center px-15 gap-5">
+                    <button className="cursor-pointer text-lg" onClick={()=>handleRemove(item)}><RxCross2 /></button>
                       <img
                         className="h-15 w-15 border border-[#918e8e] bg-[#ffffff2f]"
                         src={item.thumbnail}
@@ -55,11 +67,11 @@ const Cart = () => {
                       </p>
                     </div>
                     <div className="w-1/5 flex items-center justify-center gap-3 py-5 border-r">
-                      <button className="border cursor-pointer bg-white text-black p-0.5 rounded">
+                      <button onClick={()=>handleMinus(item)} className="border cursor-pointer bg-white text-black p-0.5 rounded">
                         <FiMinus />
                       </button>
                       <div className="text-red-500">{item.qun}</div>
-                      <button className="border cursor-pointer bg-white text-black p-0.5 rounded">
+                      <button onClick={()=>handlePlus(item)} className="border cursor-pointer bg-white text-black p-0.5 rounded">
                         <FiPlus />
                       </button>
                     </div>
