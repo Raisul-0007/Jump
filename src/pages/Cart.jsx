@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { decrement, increment, removeCart } from "../components/cart/cartSlice";
 import { RxCross2 } from "react-icons/rx";
+import {Link} from "react-router-dom"
 const Cart = () => {
   let dispatch = useDispatch();
   let cartData = useSelector((state) => state.cart.cartItem);
@@ -107,6 +108,9 @@ const Cart = () => {
               </div>
               </div>
           )}
+        </div>
+        <div className="py-10 flex justify-center">
+          <Link to="/checkout" className="px-5 py-2 bg-red-700 text-2xl cursor-pointer">Checkout</Link>
         </div>
       </Container>
     </div>
