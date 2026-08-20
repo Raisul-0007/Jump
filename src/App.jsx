@@ -5,6 +5,7 @@ import Layout from "./components/Layout"
 import Shop from './pages/Shop';
 import ProductDetails from "./pages/PruductDetails"
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 function App() {
 
   let router = createBrowserRouter([
@@ -24,6 +25,9 @@ function App() {
     },{
       path: "/cart",
       element:<Cart/>
+    },{
+      path: "/checkout",
+      element: <Checkout/>
     }
   ],
   },
